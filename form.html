@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up Form</title>
+  </head>
+  <body>
+    <!-- <div class="container"> -->
+
+    <h1>SIGNUP FORM</h1>
+    <br />
+    <form action="" id="form" method="GET">
+      <label for="name">Name:</label><br />
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter Name"
+        name="name"
+        required
+      />
+      <br /><br />
+      <label for="email">Email:</label><br />
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter Email ID"
+        name="email"
+      />
+      <br /><br />
+      <label for="mobile">Mobile Number:</label><br />
+      <input
+        type="text"
+        id="mobile"
+        placeholder="Enter Mobile Number"
+        name="mobile"
+        required
+      />
+      <br /><br />
+      <label for="code">Pin Code:</label><br />
+      <input
+        type="text"
+        id="code"
+        placeholder="Enter Pin Code"
+        name="code"
+        required
+      />
+      <br /><br />
+      <label for="birthday">Date of Birth:</label><br />
+      <input type="date" id="calender" placeholder="" name="date" required />
+      <br /><br />
+      <label for="adhar">Aadharcard Number:</label><br />
+      <input
+        type="text"
+        id="adhar"
+        placeholder="Enter Aadharcard"
+        name="number"
+        required
+      />
+      <br /><br />
+      <label for="pan">PanCard Number:</label><br />
+      <input
+        type="text"
+        id="pan"
+        placeholder="Enter PanCard Number"
+        name="pan"
+        required
+      />
+      <br />
+      <br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- </div> -->
+
+    <script type="text/javascript">
+      const form = document.getElementById("form");
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const mobile = document.getElementById("mobile");
+      const code = document.getElementById("code");
+      const calender = document.getElementById("calender");
+      const pan = document.getElementById("pan");
+      const adhar = document.getElementById("adhar");
+      console.log(pan);
+      // add event
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        validate();
+      });
+
+      const validate = () => {
+        const nameVal = name.value.trim();
+        const emailVal = email.value.trim();
+        const mobileVal = mobile.value.trim();
+        const codeVal = code.value.trim();
+        const calenderVal = calender.value.trim();
+        const panVal = pan.value.trim();
+        const adharVal = adhar.value.trim();
+
+        //   mobile validation
+        if (mobileVal === "") {
+          console.log("Please Enter mobile number");
+        } else if (mobileVal.length !== 10) {
+          console.log("Invalid Mobile Number", mobileVal.length);
+        }
+        // pincode validation
+        if (codeVal === "") {
+          console.log("Please Enter PinCode");
+        } else if (codeVal.length !== 6) {
+          console.log("Invaild pincode", codeVal.length);
+        }
+        // Adhar card validation
+        if (adharVal === "") {
+          console.log("Please Enter mobile number");
+        } else if (adharVal.length !== 12) {
+          console.log("Invalid AAdhar Number", adharVal.length);
+        }
+        // Pancard validation
+        if (panVal === "") {
+          console.log("Please Enter pancard number");
+        } else if (panVal.length !== 12) {
+          console.log("Invalid Pancard Number", panVal.length);
+        }
+        // Email validation
+        let regex = new RegExp("[a-z0-9]+@[a-z]+\.[a-z]{2,3}");
+
+        if (regex.test(emailVal.value)) {
+          console.log("Email is valid");
+        } else {
+          console.log("Email is not valid");
+        }
+
+        // Date of birth validation
+        if (calenderVal === "") {
+          console.log("Please Date of birth");
+        } else if (calenderVal) {
+          console.log("Age above 18years");
+        }
+      };
+    </script>
+  </body>
+</html>
