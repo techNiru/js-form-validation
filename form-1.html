@@ -20,7 +20,6 @@
         name="name"
         required
       />
-
       <br /><br />
       <label for="email">Email:</label><br />
       <input
@@ -28,51 +27,48 @@
         id="email"
         placeholder="Enter Email ID"
         name="email"
-      /><br />
-      <span id="email-id" style="color: red; font-size: 6"></span>
-      <br />
+      />
+      <br /><br />
       <label for="mobile">Mobile Number:</label><br />
       <input
         type="text"
         id="mobile"
         placeholder="Enter Mobile Number"
         name="mobile"
-      /><br />
-      <span id="number" style="color: red; font-size: 6"></span>
-      <br />
+        required
+      />
+      <br /><br />
       <label for="code">Pin Code:</label><br />
       <input
         type="text"
         id="code"
         placeholder="Enter Pin Code"
         name="code"
-      /><br />
-      <span id="pin" style="color: red; font-size: 6"></span>
-      <br />
+        required
+      />
+      <br /><br />
       <label for="birthday">Date of Birth:</label><br />
-      <input type="date" id="calender" placeholder="" name="date" />
-      <br />
-      <span id="num" style="color: red; font-size: 6"></span>
-      <br />
+      <input type="date" id="calender" placeholder="" name="date" required />
+      <br /><br />
       <label for="adhar">Aadharcard Number:</label><br />
       <input
         type="text"
         id="adhar"
         placeholder="Enter Aadharcard"
         name="number"
-      /><br />
-      <span id="adhar-card" style="color: red; font-size: 6"></span>
-      <br />
+        required
+      />
+      <br /><br />
       <label for="pan">PanCard Number:</label><br />
       <input
         type="text"
         id="pan"
         placeholder="Enter PanCard Number"
         name="pan"
-      /><br />
-      <span id="card" style="color: red; font-size: 6"></span>
+        required
+      />
       <br />
-
+      <br />
       <input type="submit" value="Submit" />
     </form>
 
@@ -87,7 +83,7 @@
       const calender = document.getElementById("calender");
       const pan = document.getElementById("pan");
       const adhar = document.getElementById("adhar");
-
+      console.log(pan);
       // add event
       form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -105,60 +101,43 @@
 
         //   mobile validation
         if (mobileVal === "") {
-          document.getElementById("number").innerHTML =
-            "Please Enter mobile number";
+          console.log("Please Enter mobile number");
         } else if (mobileVal.length !== 10) {
-          document.getElementById("number").innerHTML = "Invalid Mobile Number";
-          mobileVal.length;
+          console.log("Invalid Mobile Number", mobileVal.length);
         }
         // pincode validation
         if (codeVal === "") {
-          document.getElementById("pin").innerHTML = "Please Enter PinCode";
+          console.log("Please Enter PinCode");
         } else if (codeVal.length !== 6) {
-          document.getElementById("pin").innerHTML = "Invaild pincode";
-          codeVal.length;
+          console.log("Invaild pincode", codeVal.length);
         }
         // Adhar card validation
         if (adharVal === "") {
-          document.getElementById("adhar-card").innerHTML =
-            "Please Enter adharCard number";
+          console.log("Please Enter mobile number");
         } else if (adharVal.length !== 12) {
-          document.getElementById("adhar-card").innerHTML =
-            "Invalid Aadhar Number";
-          adharVal.length;
+          console.log("Invalid AAdhar Number", adharVal.length);
         }
         // Pancard validation
         if (panVal === "") {
-          document.getElementById("card").innerHTML =
-            "Please Enter pancard number";
+          console.log("Please Enter pancard number");
         } else if (panVal.length !== 12) {
-          document.getElementById("card").innerHTML = "Invalid Pancard Number";
-          panVal.length;
+          console.log("Invalid Pancard Number", panVal.length);
         }
         // Email validation
         let regex = new RegExp("[a-z0-9]+@[a-z]+\.[a-z]{2,3}");
 
-        if (regex.test(emailVal)) {
+        if (regex.test(emailVal.value)) {
           console.log("Email is valid");
         } else {
-          document.getElementById("email-id").innerHTML = "Email is not valid";
+          console.log("Email is not valid");
         }
 
         // Date of birth validation
-        const todayDate = new Date();
-        const fullYear = todayDate.getFullYear();
-        const minValidAgeYear = fullYear - 18;
-        const getBirthdayYear = calenderVal.split("-");
-        if (getBirthdayYear[0] > minValidAgeYear) {
-          document.getElementById("num").innerHTML = "Age must be 18+";
+        if (calenderVal === "") {
+          console.log("Please Date of birth");
+        } else if (calenderVal) {
+          console.log("Age above 18years");
         }
-        console.log("name", nameVal);
-        console.log("email", emailVal);
-        console.log("Mobile", mobileVal);
-        console.log("PinCode", codeVal);
-        console.log("Date of Birth", calenderVal);
-        console.log("PanCard", panVal);
-        console.log("AadharCard", adharVal);
       };
     </script>
   </body>
